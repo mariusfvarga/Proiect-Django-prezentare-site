@@ -1,8 +1,9 @@
 # Django Setup
 '''bash
 pip install django
-django-admin startproject my_project
-cd my_project
+# Only run these when starting up a new server
+# django-admin startproject my_project
+# cd my_project
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
