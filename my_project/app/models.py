@@ -13,5 +13,10 @@ class Favorit(models.Model):
     produs = models.ForeignKey(Produs, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
-       
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    telefon = models.CharField(max_length=15)
+    adresa = models.CharField(max_length=100)
+    localitate = models.CharField(max_length=20)
+          
     
