@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Produs
+from .models import Produs, Recenzie
 
 # Create your views here.
 def salut(request):
@@ -26,6 +26,9 @@ def lista_produse(request):
 def produs(request, id):
     try:
         produs = Produs.objects.get(id=id)
+        recenzii = produs.recenzie_set.all()
+        recenzii_str = [recenzie.titlu for recenzie in recenzii]
     except Produs.DoesNotExist:
         return HttpResponse("404")
-    return HttpResponse(f"{produs}")
+    return HttpResponse(f"{produs} <br /> {recenzii_str}")
+ 
