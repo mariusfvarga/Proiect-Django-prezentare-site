@@ -13,6 +13,8 @@ def lista_produse(request):
         produse = produse.filter(pret__lt=int(request.GET["pret_maxim"]))
     if "search" in request.GET:
         produse = produse.filter(titlu__icontains=request.GET["search"])
+    
+    produse = produse.order_by("pret")
    
     produse_formatat = [
         f"<li>{produs.titlu} - {produs.pret} - {produs.stoc}</li>"
