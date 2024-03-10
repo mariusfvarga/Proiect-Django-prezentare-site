@@ -1,6 +1,8 @@
 FROM python:3.12
 # Instalez dependinte
-RUN pip install django
+RUN apt-get update && apt-get install build-essential graphviz graphviz-dev --assume-yes
+COPY ./requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 # Adaug cod
 ADD my_project my_project
 WORKDIR my_project
