@@ -1,0 +1,13 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>Lista produse</title>
+    </head>
+    <body>
+        <ol>
+            {% for produs in produse %}
+            <li>{{ produs }} - {{ produs.pret}}</li>
+            {% endfor %}
+        </ol>
+    </body>
+</html>

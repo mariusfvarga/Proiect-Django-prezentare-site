@@ -16,16 +16,9 @@ def lista_produse(request):
         produse = produse.filter(titlu__icontains=request.GET["search"])
     
     produse = produse.order_by("pret")
-   
-    produse_formatat = [
-        f"<li>{produs.titlu} - {produs.pret} - {produs.stoc}</li>"
-        for produs in produse
-    ]
     
-    response_string = "<body><ul>"
-    response_string += "".join(produse_formatat)
-    response_string += "</ul></body>"
-    return HttpResponse(response_string)
+    return render(request, "produse.html", {"produse": produse})
+
 
 def produs(request, id):
     try:
