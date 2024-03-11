@@ -6,7 +6,8 @@
     <body>
         <ol>
             {% for produs in produse %}
-            <li>{{ produs }} - {{ produs.pret}}</li>
+            <li>
+                <a href="{% url 'pagina-produs' produs.id%}" target="_blank">{{ produs }}</a>- {{ produs.pret}}</li>
             {% endfor %}
         </ol>
     </body>
