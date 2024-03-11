@@ -5,6 +5,7 @@ from .models import Produs, Recenzie
 
 # Create your views here.
 def salut(request):
+    return render(request, "index.html")
     return HttpResponse("Salut")
 
 def lista_produse(request):
