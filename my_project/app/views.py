@@ -26,6 +26,7 @@ def produs(request, id):
         recenzii = produs.recenzie_set.all()
         recenzii_str = [recenzie.titlu for recenzie in recenzii]
     except Produs.DoesNotExist:
-        return HttpResponse("404")
-    return HttpResponse(f"{produs} <br /> {recenzii_str}")
+        return HttpResponse("Page not found 404")
+    return render(request, "produs.html", {"produs":produs})
+    
  

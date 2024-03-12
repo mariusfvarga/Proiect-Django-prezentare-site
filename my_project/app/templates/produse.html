@@ -1,16 +1,10 @@
-<!Doctype html>
-<html>
-    <head>
-        <title>Lista produse</title>
-    </head>
-    <body>
-        <ol>
+{% extends "base.html" %}
+{% block title %}Lista-produse - {{ bolck.super }} {% endblock title%}
+{% block body %}
             {% for produs in produse %}
             <li>
                 <a href="{% url 'pagina-produs' produs.id%}" target="_blank">{{ produs }}</a>- {{ produs.pret}}
                 Rating {{ produs.rating }} / 5
             </li>
             {% endfor %}
-        </ol>
-    </body>
-</html>
+{% endblock body %}
