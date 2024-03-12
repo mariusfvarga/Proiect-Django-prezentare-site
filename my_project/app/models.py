@@ -2,7 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+class Producator(models.Model):
+    nume = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.nume}"
 class Produs(models.Model):
+    producator = models.ForeignKey(Producator, null=True, blank = True, on_delete=models.CASCADE)
     titlu = models.CharField(max_length=50) #unique=True - daca vrem sa nu avem dubluri la nume
     pret = models.FloatField(db_index = True)
     stoc = models.IntegerField(default=0)
