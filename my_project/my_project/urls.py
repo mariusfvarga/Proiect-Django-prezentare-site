@@ -20,8 +20,8 @@ from app import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("salut", views.salut),
-    path("lista-produse", views.lista_produse),
+    path("", views.salut, name="home"),
+    path("lista-produse", views.lista_produse, name ="pagina-produse" ),
     path("produs/<int:id>/", views.produs, name="pagina-produs"),
     path("__debug__/", include("debug_toolbar.urls"))
     
