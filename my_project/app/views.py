@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.core.mail import send_mail
 
 from .models import Produs, Recenzie
 
@@ -31,6 +32,11 @@ def produs(request, id):
     return render(request, "produs.html", {"produs":produs})
 
 def contact(request):
+    if request.method == "POST":
+        email = request.POST["email"]
+        subiect = request.POST["subiect"]
+        mesaj = request.POST["mesaj"]
+        send_mail(subiect, mesaj, from_email="mariusss_1985@yahoo.com", recipient_list=[email])
     return render(request, "contact.html", {})
     
  
