@@ -5,7 +5,8 @@ from .models import Produs, Recenzie
 
 # Create your views here.
 def salut(request):
-    return render(request, "index.html")
+    produse = Produs.objects.all().select_related("producator").prefetch_related("recenzie_set").order_by("-created")[:9]
+    return render(request, "index.html", {"produse": produse})
     return HttpResponse("Salut")
 
 def lista_produse(request):
