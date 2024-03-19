@@ -29,5 +29,8 @@ def produs(request, id):
     except Produs.DoesNotExist:
         return HttpResponse("Page not found 404")
     return render(request, "produs.html", {"produs":produs})
+
+def contact(request):
+    return render(request, "contact.html", {})
     
  
