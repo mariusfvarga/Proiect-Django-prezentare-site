@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
+
 
 from .models import Produs, Recenzie
 from .forms import ContactForm, CustomLoginForm
@@ -54,3 +56,8 @@ def custom_login(request):
             return redirect("/")
     
     return render(request, "login.html", {"form": form })
+
+def logout_view(request):
+    logout(request)
+    return redirect("/")
+    
