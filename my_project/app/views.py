@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
 
 from .models import Produs, Recenzie
@@ -61,7 +62,10 @@ def logout_view(request):
     logout(request)
     return redirect("/")
 
+@login_required
 def adauga_produs(request):
+    if not request.user.is_staff:
+        return redirect("/")
     formular = ProdusForm()
     if request.method == "POST":
         formular = ProdusForm(request.POST)
