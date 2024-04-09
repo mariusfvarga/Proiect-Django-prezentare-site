@@ -6,7 +6,7 @@ from django.contrib.auth import logout
 
 
 from .models import Produs, Recenzie
-from .forms import ContactForm, CustomLoginForm
+from .forms import *
 
 # Create your views here.
 def salut(request):
@@ -60,4 +60,14 @@ def custom_login(request):
 def logout_view(request):
     logout(request)
     return redirect("/")
-    
+
+def adauga_produs(request):
+    formular = ProdusForm()
+    if request.method == "POST":
+        formular = ProdusForm(request.POST)
+        if formular.is_valid():
+            formular.save()
+            return redirect("/lista-produse")
+    return render(request, "adauga_produs.html", {"form": formular})
+
+      
