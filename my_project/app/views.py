@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 
 from .decorators import is_staff
@@ -71,7 +72,17 @@ def adauga_produs(request):
         formular = ProdusForm(request.POST)
         if formular.is_valid():
             formular.save()
-            return redirect("/lista-produse")
+            return redirect(reverse("pagina-produse"))
     return render(request, "adauga_produs.html", {"form": formular})
 
+
+def editare_produs(request, produs_id):
+    produs = get_object_or_404(Produs, id=produs_id)
+    formular = ProdusForm(instance=produs)
+    if request.method == "POST":
+        formular = ProdusForm(request.POST, instance=produs)
+        if formular.is_valid():
+            formular.save()
+            return redirect(reverse("pagina-produse"))
+    return render(request, "editare_produs.html", {"form": formular})
       
