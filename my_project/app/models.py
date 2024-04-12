@@ -46,6 +46,14 @@ class Recenzie(models.Model):
     def __str__(self):
         return f"Recenzie {self.produs}"
     
+
+class Intrebare(models.Model):
+    produs = models.ForeignKey(Produs, on_delete=models.CASCADE)
+    text_intrebare = models.CharField(max_length=200)
+    text_raspuns = models.CharField(max_length=200, null=True, blank=True)
+    
+        
+    
 class Favorit(models.Model):
     produs = models.ForeignKey(Produs, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
