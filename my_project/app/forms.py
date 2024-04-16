@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ValidationError
 from django.contrib.auth import authenticate
+from tinymce.widgets import TinyMCE
 
 from .models import Produs
 
@@ -34,6 +35,10 @@ class ProdusForm(forms.ModelForm):
     class Meta:
         model = Produs
         fields = "__all__"
+        widgets = {"descriere": TinyMCE(attrs={'cols': 80, 'rows': 30})}
+        
+        
+        
         
 
         

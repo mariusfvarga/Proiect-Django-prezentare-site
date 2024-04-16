@@ -6,6 +6,8 @@
     {{ produs }} <br/>
     Data crearii: {{ produs.created|naturaltime }} <br/>
     Rating {{ produs.rating|starrating }}
+    <h5>Descriere</h5>
+    {{ produs.descriere|safe }}
     <h5>Recenzii</h5>
     {% for recenzie in produs.recenzie_set.all %}
         {{recenzie.titlu}} - {{ recenzie.rating }} <br/>
