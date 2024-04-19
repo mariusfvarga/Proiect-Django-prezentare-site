@@ -75,7 +75,7 @@ def adauga_produs(request):
             return redirect(reverse("pagina-produse"))
     return render(request, "adauga_produs.html", {"form": formular})
 
-@is_staff
+
 @login_required
 def editare_produs(request, produs_id):
     produs = get_object_or_404(Produs, id=produs_id)

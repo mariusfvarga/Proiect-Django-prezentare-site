@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'tinymce',
     'app',
-    'django.contrib.humanize'
+    'django.contrib.humanize',
+    'crispy_forms',
+    'crispy_bootstrap5'
 ]
 
 MIDDLEWARE = [
@@ -140,4 +142,8 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = "galerie"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 

@@ -1,16 +1,38 @@
 {% extends "base.html" %}
 {% load humanize %}
 {% load my_filters %}
-{% block title %} Produs {{produs.titlu}} - {{ block.super }} {% endblock title %}
+{% block title %}
+ Produs  {{ produs.titlu }} - {{ block.super }} 
+{% endblock title %} 
+
 {% block body%}
-    {{ produs }} <br/>
+    <h3> {{ produs }} </h3>
     Data crearii: {{ produs.created|naturaltime }} <br/>
     Rating {{ produs.rating|starrating }}
     <h5>Descriere</h5>
     {{ produs.descriere|safe }}
     <h5>Recenzii</h5>
-    {% for recenzie in produs.recenzie_set.all %}
-        {{recenzie.titlu}} - {{ recenzie.rating }} <br/>
-    {% endfor %}
+        {% for recenzie in produs.recenzie_set.all %}
+            {{recenzie.titlu}} - {{ recenzie.rating }} <br/>
+        {% endfor %}
+    <p class="card-text"> <h4> Pret: {{ produs.pret }} lei</h4> </p>
     <a href="{% url 'edit-produs' produs.id %}">Editeaza</a>
+    {% block content %} 
+        <div style="display: flex;">
+            <div style="flex: 50%;">
+                {% if produs.imagine %}
+                    <img src="{{ produs.imagine.url }}" alt="{{ produs.titlu }}" style="width: 100%;">
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+                </div>
+            <div style="flex: 50%;">
+          
+            </div>
+        </div>
+    <div style="bottom:0 !important; text-align:center;">
+        <a href="{% url 'pagina-produse' %}" class="btn btn-primary">Back to List</a>
+    </div>
+
+    {% endblock content %}
 {% endblock body %}
