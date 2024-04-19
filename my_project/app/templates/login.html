@@ -2,12 +2,17 @@
 {% block body %}
 {% load crispy_forms_tags %}
 <div class="container">
-    <h2>Login</h2>
-<form method="POST">
-    {% csrf_token %}
-    {{ form|crispy }}
-    {{ eroare }}
-    <input type="submit" value="Trimite!" />
-</form>
+    <div class="row">
+        <div class="col-md-6">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                {% if eroare %}
+                    <p class="text-danger">{{ eroare }}</p>
+                {% endif %}
+                <button type="submit" >Trimite!</button>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock body %}
