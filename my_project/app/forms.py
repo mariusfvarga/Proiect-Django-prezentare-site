@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from tinymce.widgets import TinyMCE
 
-from .models import Produs
+from .models import Produs, Recenzie
 
 
 class ContactForm(forms.Form):
@@ -20,10 +20,9 @@ class ContactForm(forms.Form):
         return email
  
 class UserCreationForm(forms.ModelForm):
+    username = forms.CharField()
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
-    password2 = forms.CharField(
-        label="Password confirmation", widget=forms.PasswordInput
-    )
+    password2 = forms.CharField(label="Password confirmation", widget=forms.PasswordInput)
     class Meta:
         model = User
         fields = ['username', ]
@@ -66,7 +65,15 @@ class ProdusForm(forms.ModelForm):
             "descriere": TinyMCE()
         }
         
-        
+class RecenzieForm(forms.ModelForm):
+    class Meta:
+        model = Recenzie
+        fields = "__all__"
+        exclude = ["produs"]
+        widgets = {
+            "descriere": TinyMCE()
+        }
+              
         
         
 

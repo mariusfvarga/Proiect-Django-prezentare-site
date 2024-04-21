@@ -27,6 +27,7 @@ urlpatterns = [
     path("produs/detalui/<int:id>/", views.produs, name="pagina-produs"),
     path("produs/adauga/", views.adauga_produs, name="adauga-produs"),
     path("produs/edit/<int:produs_id>/", views.editare_produs, name="edit-produs"),
+    path("produs/recenzie/<int:produs_id>/", views.recenzie_produs, name="recenzie-produs"),
     path("contact", views.contact, name = "contact"),
     path("__debug__/", include("debug_toolbar.urls")),
     path("signup", views.signup, name="signup"),
@@ -34,5 +35,6 @@ urlpatterns = [
     path("logout", views.logout_view, name = "logout"), 
     path("api/", include('rest_framework.urls')),
     path("tinymce/", include('tinymce.urls'))
+    
     
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)
