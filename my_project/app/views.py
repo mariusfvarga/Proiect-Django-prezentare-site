@@ -76,7 +76,7 @@ def adauga_produs(request):
     return render(request, "adauga_produs.html", {"form": formular})
 
 
-@login_required
+@is_staff
 def editare_produs(request, produs_id):
     produs = get_object_or_404(Produs, id=produs_id)
     formular = ProdusForm(instance=produs)
