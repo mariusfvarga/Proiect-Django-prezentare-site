@@ -23,7 +23,7 @@
                       <a class="nav-link" href="{% url 'pagina-produse' %}">Produse</a>
                     </li>
                     {% if request.user.is_staff %}
-                    <li class="nav-item">
+                    <li class="nav-item" >
                       <a class="nav-link" href="{% url 'adauga-produs' %}">Adauga produse</a>
                     </li>
                     {% endif%}
