@@ -29,6 +29,7 @@ urlpatterns = [
     path("produs/edit/<int:produs_id>/", views.editare_produs, name="edit-produs"),
     path("contact", views.contact, name = "contact"),
     path("__debug__/", include("debug_toolbar.urls")),
+    path("signup", views.signup, name="signup"),
     path("login", views.custom_login, name="login"), 
     path("logout", views.logout_view, name = "logout"), 
     path("api/", include('rest_framework.urls')),

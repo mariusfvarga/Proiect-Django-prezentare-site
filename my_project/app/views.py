@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 from .decorators import is_staff
@@ -13,7 +15,7 @@ from .forms import *
 
 # Create your views here.
 def salut(request):
-    produse = Produs.objects.all().select_related("producator").prefetch_related("recenzie_set").order_by("-created")[:9]
+    produse = Produs.objects.all().select_related("producator").prefetch_related("recenzie_set").order_by("-created")[:6]
     return render(request, "index.html", {"produse": produse})
     return HttpResponse("Salut")
 
@@ -49,7 +51,19 @@ def contact(request):
             send_mail(subiect, mesaj, from_email="mariusss_1985@yahoo.com", recipient_list=[email])
             return redirect("/")
     return render(request, "contact.html", {"form": form})
+
+   
+def signup(request):
     
+    form = UserCreationForm()
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            login(request, form.instance)
+            return redirect("/")
+    return render(request, "signup.html", {"form": form})
+
 def custom_login(request):
     form = CustomLoginForm()
     if request.method == "POST":
