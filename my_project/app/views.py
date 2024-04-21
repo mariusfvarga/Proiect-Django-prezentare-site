@@ -100,7 +100,9 @@ def editare_produs(request, produs_id):
             formular.save()
             return redirect(reverse("pagina-produse"))
     return render(request, "editare_produs.html", {"form": formular})
-      
+
+
+@login_required      
 def recenzie_produs(request, produs_id):
     produs = get_object_or_404(Produs, id=produs_id)
     if request.method == "POST":

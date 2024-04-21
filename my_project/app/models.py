@@ -8,6 +8,9 @@ class Producator(models.Model):
 
     def __str__(self):
         return f"{self.nume}"
+    class Meta:
+        verbose_name_plural = "Producator"
+
 class Produs(models.Model):
     producator = models.ForeignKey(Producator, null=True, blank = True, on_delete=models.CASCADE)
     titlu = models.CharField(max_length=50) #unique=True - daca vrem sa nu avem dubluri la nume
@@ -20,6 +23,8 @@ class Produs(models.Model):
     
     def __str__(self):
         return f"{self.titlu}"
+    class Meta:
+        verbose_name_plural = "Produs"
 
     @property
     def rating(self):
@@ -45,14 +50,16 @@ class Recenzie(models.Model):
     
     def __str__(self):
         return f"Recenzie {self.produs}"
-    
+    class Meta:
+        verbose_name_plural = "Recenzie"
 
 class Intrebare(models.Model):
     produs = models.ForeignKey(Produs, on_delete=models.CASCADE)
     text_intrebare = models.CharField(max_length=200)
     text_raspuns = models.CharField(max_length=200, null=True, blank=True)
     
-        
+    class Meta:
+        verbose_name_plural = "Intrebare"    
     
 class Favorit(models.Model):
     produs = models.ForeignKey(Produs, on_delete=models.CASCADE)
@@ -60,6 +67,8 @@ class Favorit(models.Model):
     
     def __str__(self):
         return f"{self.produs}"
+    class Meta:
+        verbose_name_plural = "Favorit"
     
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -70,5 +79,6 @@ class UserProfile(models.Model):
     def __str__(self):
         return f"{self.user}"
     
-           
+    class Meta:
+        verbose_name_plural = "UserProfile"       
     
