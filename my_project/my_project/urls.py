@@ -25,7 +25,7 @@ urlpatterns = [
     path("", views.salut, name="home"),
     path("produs/lista", views.lista_produse, name ="pagina-produse" ),
     path("produs/detalui/<int:id>/", views.produs, name="pagina-produs"),
-    path("produs/adauga/", views.adauga_produs),
+    path("produs/adauga/", views.adauga_produs, name="adauga-produs"),
     path("produs/edit/<int:produs_id>/", views.editare_produs, name="edit-produs"),
     path("contact", views.contact, name = "contact"),
     path("__debug__/", include("debug_toolbar.urls")),

@@ -35,7 +35,9 @@ class ProdusForm(forms.ModelForm):
     class Meta:
         model = Produs
         fields = "__all__"
-        widgets = {"descriere": TinyMCE(attrs={'cols': 80, 'rows': 30})}
+        widgets = {
+            "descriere": TinyMCE()
+        }
         
         
         

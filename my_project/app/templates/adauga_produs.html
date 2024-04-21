@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 {% block body %}
-<h1> Adauga Produs </h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" />
-    </form>
+{% load crispy_forms_tags %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Adauga produs</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="submit" class="btn btn-primary" value="Salvare" />
+                </form>
+        </div>
+    </div>
+</div>
 {% endblock body %}
