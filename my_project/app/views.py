@@ -54,7 +54,6 @@ def contact(request):
 
    
 def signup(request):
-    
     form = UserCreationForm()
     if request.method == "POST":
         form = UserCreationForm(request.POST)

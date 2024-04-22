@@ -72,9 +72,10 @@ class Favorit(models.Model):
     
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    telefon = models.CharField(max_length=15)
+    telefon = models.CharField(max_length=15, unique=True)
     adresa = models.CharField(max_length=100)
     localitate = models.CharField(max_length=20)
+    email = models.EmailField()
     
     def __str__(self):
         return f"{self.user}"

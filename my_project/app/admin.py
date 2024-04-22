@@ -7,9 +7,7 @@ from django.http import HttpRequest
 from .models import Produs, Favorit, UserProfile, Recenzie, Producator, Intrebare
 
 
-admin.site.register(Favorit)
-admin.site.register(UserProfile)
-admin.site.register(Recenzie)
+# admin.site.register(Favorit)
 admin.site.register(Producator)
 
 def retrage_din_oferta(modeladmin, request, queryset):
@@ -32,11 +30,25 @@ class ProdusAdmin(admin.ModelAdmin):
     list_select_related = ("producator", )
     list_editable = ("stoc", )
     actions = (retrage_din_oferta, )
-    inlines = (IntrebareInline, )
+    # inlines = (IntrebareInline, )
     
     
     
 admin.site.register(Produs, ProdusAdmin)
 
+class RecenzieAdmin(admin.ModelAdmin):
+    list_display = ("produs", "rating", "titlu")
+    list_filter = ("rating", )
+    list_editable = ("rating", )
+    search_fields = ("produs__titlu", )
+    
+admin.site.register(Recenzie, RecenzieAdmin)
+
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ("user", "telefon", "email")
+    search_fields = ("user__username", )
+    list_editable = ("telefon", "email")
+    
+admin.site.register(UserProfile, UserProfileAdmin)
 
 
