@@ -5,15 +5,12 @@
         <div class="col-md-4">
           <div class="card">
             <div class="card-body">
-              <h3 class="card-title">
+              <h4 class="card-title">
                 <img style='width:200px; height:auto; ' src="{%if produs.imagine %}{{ produs.imagine.url }}{% endif %}" class="card-img-top"></br>
                 <a href="{% url 'pagina-produs' produs.id %}" target="_blank">{{ produs }} </a>
 
-            </h3>
+            </h4>
             <br>
-            {% comment%}
-            {{ produs.rating|starrating }}
-            {% endcomment%}
 
             {{ produs.rating|starrating }}
             {% if produs.rating > 0 %}
