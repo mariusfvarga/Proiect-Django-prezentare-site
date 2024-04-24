@@ -2,6 +2,7 @@ from typing import Any
 from django.contrib import admin
 from django.db.models.query import QuerySet
 from django.http import HttpRequest
+from .forms import ProdusForm
 
 # Register your models here.
 from .models import Produs, Favorit, UserProfile, Recenzie, Producator, Intrebare
@@ -30,6 +31,7 @@ class ProdusAdmin(admin.ModelAdmin):
     list_select_related = ("producator", )
     list_editable = ("stoc", )
     actions = (retrage_din_oferta, )
+    form = ProdusForm
     # inlines = (IntrebareInline, )
     
     
